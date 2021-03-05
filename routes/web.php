@@ -1,5 +1,8 @@
 <?php
 
+use App\Services\BooksService;
+use App\Services\GoogleApiService;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', function (BooksService $book) {
+    return  $book->search('startup');
 });
