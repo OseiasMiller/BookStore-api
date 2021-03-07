@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\FavoritesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('books/{search}', [BooksController::class, 'search']);
+Route::group(['prefix' => 'favorites'], function () {
+    Route::get('/', [FavoritesController::class, 'get']);
+    Route::post('/', [FavoritesController::class, 'create']);
+    Route::delete('/{favorite}', [FavoritesController::class, 'delete']);
 });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Favorite;
 use App\Services\BooksService;
 use App\Services\GoogleApiService;
 use Illuminate\Support\Arr;
@@ -15,9 +16,3 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-Route::get('/', function (BooksService $book) {
-    return  $book->search('startup');
-});
